@@ -14,6 +14,15 @@ set :deploy_to, '/home/evomedia/rvm1cap3'
 
 server '192.168.0.202', user: 'evomedia', roles: %w{app}, my_property: :my_value
 
+namespace :deploy do
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      # Your restart mechanism here, for example:
+      # execute :touch, release_path.join('tmp/restart.txt')
+    end
+  end
+end
 
 # Custom SSH Options
 # ==================
