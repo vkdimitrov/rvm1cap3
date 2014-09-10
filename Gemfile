@@ -38,4 +38,5 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'capistrano', '~> 3.2.0'
+gem 'capistrano-rails', '~> 1.1'
 gem 'therubyracer'
