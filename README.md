@@ -5,13 +5,16 @@ This is simple ruby app with one model and migration. The purpose of the repo is
 ## passwordless login ##
 Thise setup requires passwordless login from your dev machine to the remote machine and also that the server have passwordless read access to your git repo
 
-One way to accomplish that is wiht private key and kay-agent
+One way to accomplish that is wiht private key and and ssh key forwarding. More here
+
+https://help.github.com/articles/generating-ssh-keys
+https://developer.github.com/guides/using-ssh-agent-forwarding/
 
 ## required gems ##
 
 <a href="https://github.com/capistrano/capistrano">capistrano3</a>  is used for actual deployment
 
-<a href="https://github.com/capistrano/rails">capistrano-rails</a> is used for rails specific task like run rake db:migrate and rake assets:precompile 
+<a href="https://github.com/capistrano/rails">capistrano-rails</a> is used for rails specific task like run `rake db:migrate` and `rake assets:precompile`
 
 <a href="https://github.com/rvm/rvm1-capistrano3">rvm1-capistrano3</a> is used for detection of ruby binary on the remote machine (where we want to deploy) 
 
