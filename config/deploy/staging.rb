@@ -5,6 +5,7 @@
 # property set.  Don't declare `role :all`, it's a meta role.
 
 role :app, %w{evomedia@192.168.0.202}
+role :db, %w{evomedia@192.168.0.202}
 set :deploy_to, '/home/evomedia/rvm1cap3'
 set :rvm1_ruby_version, "2.1.1"
 # Extended Server Syntax
@@ -13,12 +14,14 @@ set :rvm1_ruby_version, "2.1.1"
 # server list. The second argument is a, or duck-types, Hash and is
 # used to set extended properties on the server.
 
-server '192.168.0.202', user: 'evomedia', roles: %w{app}, my_property: :my_value
+server '192.168.0.202', user: 'evomedia', roles: %w{app db}
 
 namespace :deploy do
   desc 'Restart application'
   task :restart do
     on roles(:app), in: :sequence, wait: 5 do
+      execute ("cd #{fetch(:deploy_to)}/current") 
+      execute :rake, "db:migrate"
       # Your restart mechanism here, for example:
       # execute :touch, release_path.join('tmp/restart.txt')
     end
