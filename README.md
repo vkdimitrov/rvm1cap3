@@ -1,11 +1,11 @@
 rvm1cap3
 ========
-This is simple ruby app with one model and migration. The purpose of the repo is to guide you throuhgt process of integration capistrano3 and setup multistaging deploy on server with rvm.
+This is simple ruby app with one model and his migration. The purpose of the repo is to guide you through process of integration capistrano3 and setup multi staging deploy on server with rvm.
 
 ## passwordless login ##
-Thise setup requires passwordless login from your dev machine to the remote machine and also that the server have passwordless read access to your git repo
+This setup requires passwordless login from your dev machine to the remote machine and also that the server have passwordless read access to your git repo
 
-One way to accomplish that is with private key and and ssh key forwarding. More info:
+One way to accomplish that is with private key and ssh key forwarding. More info:
 
 https://help.github.com/articles/generating-ssh-keys
 
@@ -80,4 +80,5 @@ deploy to production
 `cap production deploy`
 
 deploy to staging
+
 `cap staging deploy`
