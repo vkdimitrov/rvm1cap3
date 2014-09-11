@@ -5,9 +5,10 @@ This is simple ruby app with one model and migration. The purpose of the repo is
 ## passwordless login ##
 Thise setup requires passwordless login from your dev machine to the remote machine and also that the server have passwordless read access to your git repo
 
-One way to accomplish that is wiht private key and and ssh key forwarding. More here
+One way to accomplish that is with private key and and ssh key forwarding. More info:
 
 https://help.github.com/articles/generating-ssh-keys
+
 https://developer.github.com/guides/using-ssh-agent-forwarding/
 
 ## required gems ##
