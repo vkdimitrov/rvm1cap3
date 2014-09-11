@@ -10,7 +10,9 @@ One way to accomplish that is wiht private key and kay-agent
 ## required gems ##
 
 <a href="https://github.com/capistrano/capistrano">capistrano3</a>  is used for actual deployment
+
 <a href="https://github.com/capistrano/rails">capistrano-rails</a> is used for rails specific task like run rake db:migrate and rake assets:precompile 
+
 <a href="https://github.com/rvm/rvm1-capistrano3">rvm1-capistrano3</a> is used for detection of ruby binary on the remote machine (where we want to deploy) 
 
 Add these to your Gemfile and install them
