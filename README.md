@@ -1,6 +1,6 @@
 rvm1cap3
 ========
-This is simple ruby app with one model and his migration. The purpose of the repo is to guide you through process of integration capistrano3 and setup multi staging deploy on server with rvm.
+This is simple ruby app with one model and his migration. The purpose of the repo is to guide you through process of integration <a href="https://github.com/capistrano/capistrano">capistrano3</a> and setup multi staging deploy on server with <a href="http://rvm.io/">rvm</a>.
 
 ## passwordless login ##
 This setup requires passwordless login from your dev machine to the remote machine and also that the server have passwordless read access to your git repo
