@@ -1,6 +1,7 @@
 rvm1cap3
 ========
 This is simple ruby app with one model and his migration. The purpose of the repo is to guide you through process of integration <a href="https://github.com/capistrano/capistrano">capistrano3</a> and setup multi staging deploy on server with <a href="http://rvm.io/">rvm</a>.
+There are two deployment servers production (use ruby env) and staging (use rvm)
 
 ## passwordless login ##
 This setup requires passwordless login from your dev machine to the remote machine and also that the server have passwordless read access to your git repo
@@ -44,9 +45,14 @@ require 'capistrano/rails'
 ```
 ### rvm1-capistrano3 ###
 
-add this to your Capefile
+rvm1-capistrano3 are required to deploy only to the rvm server, add this to your Capefile
 ```
-require 'rvm1/capistrano3'
+# Use rmv only for stageing 
+task :use_rvm do
+  require 'rvm1/capistrano3'
+end
+
+task 'staging' => [:use_rvm]
 ```
 ### deploy configs ###
 in config/deploy.rb specify application name and path to the git repository

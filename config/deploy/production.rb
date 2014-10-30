@@ -4,42 +4,28 @@
 # is considered to be the first unless any hosts have the primary
 # property set.  Don't declare `role :all`, it's a meta role.
 
-role :app, %w{deploy@example.com}
-role :web, %w{deploy@example.com}
-role :db,  %w{deploy@example.com}
 
+role :app, %w{192.168.0.1}
+role :web, %w{192.168.0.1}
+role :db,  %w{192.168.0.1}
 
-# Extended Server Syntax
-# ======================
-# This can be used to drop a more detailed server definition into the
-# server list. The second argument is a, or duck-types, Hash and is
-# used to set extended properties on the server.
+set :default_env, {'PATH' => '/usr/local/bin:/usr/bin:/bin:/usr/games:/usr/lib64/java/bin:/usr/lib64/qt/bin:/opt/ruby/bin'}
+ruby_path = "PATH=/opt/ruby/bin:$PATH"
 
-server 'example.com', user: 'deploy', roles: %w{web app}, my_property: :my_value
+server '192.168.0.1', roles: %w{web app}, ssh_options: {user: 'evomedia', port: 2222}#, my_property: :my_value
 
+namespace :deploy do
+  
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      # Your restart mechanism here, for example:
+      # execute :touch, release_path.join('tmp/restart.txt')
+      #deploy:migrate
+      #execute "#{ruby_path} && cd #{fetch(:deploy_to)}current/ && RAILS_ENV=production bundle exec rake db:migrate"
+      #execute "#{ruby_path} && cd #{fetch(:deploy_to)}current/ && RAILS_ENV=production bundle exec rake assets:precompile"
+      execute '/home/evomedia/rc.d/rc.unicorn-evomedia restart'
+    end
+  end
+end
 
-# Custom SSH Options
-# ==================
-# You may pass any option but keep in mind that net/ssh understands a
-# limited set of options, consult[net/ssh documentation](http://net-ssh.github.io/net-ssh/classes/Net/SSH.html#method-c-start).
-#
-# Global options
-# --------------
-#  set :ssh_options, {
-#    keys: %w(/home/rlisowski/.ssh/id_rsa),
-#    forward_agent: false,
-#    auth_methods: %w(password)
-#  }
-#
-# And/or per server (overrides global)
-# ------------------------------------
-# server 'example.com',
-#   user: 'user_name',
-#   roles: %w{web app},
-#   ssh_options: {
-#     user: 'user_name', # overrides user setting above
-#     keys: %w(/home/user_name/.ssh/id_rsa),
-#     forward_agent: false,
-#     auth_methods: %w(publickey password)
-#     # password: 'please use keys'
-#   }

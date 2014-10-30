@@ -7,8 +7,11 @@
 role :app, %w{evomedia@192.168.0.202}
 role :db, %w{evomedia@192.168.0.202}
 role :web, %w{evomedia@192.168.0.202}
+
 set :deploy_to, '/home/evomedia/rvm1cap3'
+set :rvm1_auto_script_path, "/tmp/#{fetch(:application)}"
 set :rvm1_ruby_version, "2.1.1"
+
 # Extended Server Syntax
 # ======================
 # This can be used to drop a more detailed server definition into the
